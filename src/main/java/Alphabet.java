@@ -1,18 +1,21 @@
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Alphabet {
+/*
+ * Interface for Alphabets
+ *
+ * @author Maxim Nacu
+ */
 
-    private static List<String> letters = Arrays.asList("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
+@FunctionalInterface
+public interface Alphabet {
 
-    public List<String> allLetters() {
-        return letters;
+    List<String> allLetters();
+
+    default List<String> availableLetters(Set<String> notAvailableLetters) {
+        Set<String> upperCaseNotAvaLetters = notAvailableLetters.stream().map(String::toUpperCase).collect(Collectors.toSet());
+        return allLetters().stream().filter(letter -> !upperCaseNotAvaLetters.contains(letter)).collect(Collectors.toList());
     }
 
-    public List<String> availableLetters(List<String> notAvailableLetters) {
-        notAvailableLetters.replaceAll(String::toUpperCase);
-        return letters.stream().filter(string -> !notAvailableLetters.contains(string)).collect(Collectors.toList());
-    }
 }

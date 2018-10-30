@@ -2,19 +2,21 @@ import com.sun.deploy.util.StringUtils;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 
 public class AlphabetTest {
 
-    private Alphabet alphabet = new Alphabet();
+    private Alphabet alphabet = new EnglishAlphabet();
 
     @Test
     public void alphabetLetters() {
         assertEquals(26, alphabet.allLetters().size());
         assertEquals("ABCDEFGHIJKLMNOPQRSTUVWXYZ", StringUtils.join(alphabet.allLetters(), ""));
-        assertEquals("AEFGHIJKLMNOPQRSTUVWXYZ", StringUtils.join(alphabet.availableLetters(Arrays.asList("B", "c", "d")), ""));
+        Set<String> wrongLetters = new HashSet<>(Arrays.asList("B", "c", "d"));
+        assertEquals("AEFGHIJKLMNOPQRSTUVWXYZ", StringUtils.join(alphabet.availableLetters(wrongLetters), ""));
     }
 
 }

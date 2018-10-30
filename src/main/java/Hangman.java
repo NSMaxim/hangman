@@ -1,25 +1,31 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
+/*
+ * Main class for Hangman logic
+ *
+ * @author Maxim
+ */
 public class Hangman {
     private final static int MAX_FAILED_GUESSES = 5;
 
     private String wordStatus;
     private String wordToGuess;
-    private List<String> wrongLetters;
+    private Set<String> wrongLetters;
     private int failedGuesses = 0;
 
     public Hangman(String wordToGuess) {
-        this.wordToGuess = wordToGuess.toUpperCase();
+        this.wordToGuess = wordToGuess;
         this.wordStatus = wordToGuess.replaceAll("[a-zA-Z]", "-");
-        this.wrongLetters = new ArrayList<String>(27);
+        this.wrongLetters = new HashSet<>(27);
     }
 
     public Hangman(String wordToGuess, String wordStatus, String wrongLetters, int failedGuesses) {
-        this.wordToGuess = wordToGuess.toUpperCase();
-        this.wordStatus = wordStatus.toUpperCase();
-        this.wrongLetters = new ArrayList<String>();
-        for (char letter : wrongLetters.toUpperCase().toCharArray()) {
+        this.wordToGuess = wordToGuess;
+        this.wordStatus = wordStatus;
+        this.wrongLetters = new HashSet<>();
+        for (char letter : wrongLetters.toCharArray()) {
             this.wrongLetters.add(String.valueOf(letter));
         }
         this.failedGuesses = failedGuesses;
@@ -29,24 +35,24 @@ public class Hangman {
         return failedGuesses;
     }
 
-    public List<String> getWrongLetters() {
-        return wrongLetters;
+    public Set<String> getWrongLetters() {
+        return wrongLetters.stream().map(String::toUpperCase).collect(Collectors.toSet());
     }
 
     public String getWordStatus() {
-        return wordStatus;
+        return wordStatus.toUpperCase();
     }
 
     public String getWordToGuess() {
-        return wordToGuess;
+        return wordToGuess.toUpperCase();
     }
 
     public HangmanStatus guessLetter(String letter) {
         String normalizedLetter = letter.toUpperCase();
-        if (wordToGuess.contains(normalizedLetter)) {
-            for (int i = 0; i < wordToGuess.length(); i++) {
-                if (normalizedLetter.equals(String.valueOf(wordToGuess.charAt(i)))) {
-                    wordStatus = wordStatus.substring(0, i) + normalizedLetter + wordStatus.substring(i + 1);
+        if (getWordToGuess().contains(normalizedLetter)) {
+            for (int i = 0; i < getWordToGuess().length(); i++) {
+                if (normalizedLetter.equals(String.valueOf(getWordToGuess().charAt(i)))) {
+                    wordStatus = getWordStatus().substring(0, i) + normalizedLetter + getWordStatus().substring(i + 1);
                 }
             }
         } else {
@@ -58,7 +64,7 @@ public class Hangman {
     }
 
     public HangmanStatus currentStatus() {
-        if (failedGuesses < MAX_FAILED_GUESSES && wordStatus.equals(wordToGuess)) {
+        if (failedGuesses < MAX_FAILED_GUESSES && wordStatus.equalsIgnoreCase(wordToGuess)) {
             return HangmanStatus.WON;
         }
         if (failedGuesses == MAX_FAILED_GUESSES) {

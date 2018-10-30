@@ -1,12 +1,17 @@
 import java.util.List;
 import java.util.Map;
 
+/*
+ * Interface for Dictionary
+ *
+ * @author Maxim Nacu
+ */
+
 public interface Dictionary {
 
-    public Map<String, List<String>> getWordsWithHints();
+    Map<String, List<String>> getWordsWithHints();
 
-    public String random();
+    String random();
 
-    public List<String> hintsFor(String word);
-
+    List<String> hintsFor(String word);
 }

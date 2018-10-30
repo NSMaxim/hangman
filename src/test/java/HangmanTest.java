@@ -85,15 +85,15 @@ public class HangmanTest {
 
         assertEquals(HangmanStatus.IN_PROGRESS, hangman.guessLetter("b"));
         assertEquals("----A", hangman.getWordStatus());
-        assertEquals(3, hangman.getWrongLetters().size());
+        assertEquals(2, hangman.getWrongLetters().size());
 
         assertEquals(HangmanStatus.IN_PROGRESS, hangman.guessLetter("b"));
         assertEquals("----A", hangman.getWordStatus());
-        assertEquals(4, hangman.getWrongLetters().size());
+        assertEquals(2, hangman.getWrongLetters().size());
 
         assertEquals(HangmanStatus.LOST, hangman.guessLetter("b"));
         assertEquals("----A", hangman.getWordStatus());
-        assertEquals(5, hangman.getWrongLetters().size());
+        assertEquals(2, hangman.getWrongLetters().size());
     }
 
 }
