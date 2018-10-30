@@ -1,4 +1,4 @@
-import com.sun.deploy.util.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 import java.util.Scanner;
@@ -38,8 +38,9 @@ public class HangmanConsoleGame {
         if (HangmanStatus.WON.equals(hangman.currentStatus())) {
             printToScreen("\nCongratulations you WON!");
         } else {
-            printToScreen("\nLooser!");
+            printToScreen("\nLooser! ");
         }
+        printToScreen("Word was - %s", hangman.getWordToGuess());
     }
 
     private static void printToScreen(String message, Object... arguments) {

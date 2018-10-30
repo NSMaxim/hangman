@@ -1,4 +1,4 @@
-import com.sun.deploy.util.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -43,7 +43,7 @@ public class HangmanTest {
     }
 
     @Test
-    public void wonGame(){
+    public void wonGame() {
         Hangman hangman = new Hangman(wordToGuess);
 
         assertEquals(HangmanStatus.IN_PROGRESS, hangman.guessLetter("a"));
@@ -68,7 +68,7 @@ public class HangmanTest {
     }
 
     @Test
-    public void lostGame(){
+    public void lostGame() {
         Hangman hangman = new Hangman(wordToGuess);
 
         assertEquals(HangmanStatus.IN_PROGRESS, hangman.guessLetter("a"));
