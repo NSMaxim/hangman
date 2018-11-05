@@ -1,3 +1,7 @@
+package core;
+
+import core.Alphabet;
+import core.EnglishAlphabet;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 

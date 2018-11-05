@@ -1,4 +1,4 @@
-/*
+package core;/*
  * Enum to represent current status of a Hangman game
  *
  * @author Maxim Nacu

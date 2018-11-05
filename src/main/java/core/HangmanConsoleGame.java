@@ -1,3 +1,5 @@
+package core;
+
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
@@ -19,15 +21,15 @@ public class HangmanConsoleGame {
         Scanner scanner = new Scanner(System.in);
 
         while (hangman.currentStatus() == HangmanStatus.IN_PROGRESS) {
-            printToScreen("----------------- Hangman, make a turn -------------------");
+            printToScreen("----------------- core.Hangman, make a turn -------------------");
 
             printToScreen("Current status: %s \n", hangman.getWordStatus());
-            printToScreen("Failed attempts: %s \n", hangman.getFailedGuesses());
+            printToScreen("Failed attempts: %s \n", hangman.getFailedAttempts());
 
             showHints(hangman, hints);
 
-            printToScreen("Letters to chose from: %s", StringUtils.join(alphabet.availableLetters(hangman.getWrongLetters()), " "));
-            printToScreen("Wrong letters: %s", StringUtils.join(hangman.getWrongLetters(), " "));
+            printToScreen("Letters to chose from: %s", StringUtils.join(alphabet.availableLetters(hangman.getChosenLetters()), " "));
+            printToScreen("Chosen letters: %s", StringUtils.join(hangman.getChosenLetters(), " "));
 
             printToScreen("----------------- Choose a letter to continue -------------------");
             printToScreen("Next letter is - ");
@@ -55,7 +57,7 @@ public class HangmanConsoleGame {
             return;
         }
 
-        for (int i = -1; i < hangman.getFailedGuesses(); i++) {
+        for (int i = -1; i < hangman.getFailedAttempts(); i++) {
             int actualHintNumber = i + 1;
             if (actualHintNumber >= hints.size()) {
                 break;

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hangman Game...</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+    <img th:src="@{'/img/' + ${hangman.getFailedAttempts()} + '.png'}"/>
+    <h1 style="letter-spacing: 10px;" th:text="${hangman.getWordStatus()}"/>
+
+    <h3>Hints:</h3>
+    <ul class="hints" th:each="hint : ${hints}">
+        <li th:text="${hint}"/>
+    </ul>
+
+    <h3>Alphabet:</h3>
+    <div class="lettersBox" th:each="letter : ${alphabet.allLetters()}" th:switch="${hangman.getChosenLetters().contains(letter)}">
+        <a th:case="${false}" th:href="@{'/game?chosenLetter=' + ${letter}+'&gameId=' + ${gameId}}"
+           th:text="${letter}"/>
+        <span th:case="${true}" th:text="${letter}"/>
+    </div>
+
+</body>
+</html>

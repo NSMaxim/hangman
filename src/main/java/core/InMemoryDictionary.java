@@ -1,3 +1,5 @@
+package core;
+
 import java.util.*;
 
 /*
@@ -9,7 +11,7 @@ import java.util.*;
 public class InMemoryDictionary implements Dictionary {
     private static final Map<String, List<String>> wordsWithHints = new HashMap<String, List<String>>() {{
         put("CAR", Arrays.asList("it has wheels", "can be steered", "seen all over the world"));
-        put("PRINCESS", Arrays.asList("a king is her relative", "stuck ina  castle most of the time", "disney loves them"));
+        put("PRINCESS", Arrays.asList("a king is her relative", "stuck in a castle most of the time", "disney loves them"));
         put("ALADDIN", Arrays.asList("used to have his own Genie", "likes his monkey", "married to a disney princess"));
     }};
 
