@@ -8,6 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/*
+ * Game entity that is used together with repository
+ *
+ * @author Maxim
+ */
+
 @Entity
 public class Game {
 

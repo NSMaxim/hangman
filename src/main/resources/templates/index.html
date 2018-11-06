@@ -11,16 +11,36 @@
     <img th:src="@{'/img/' + ${hangman.getFailedAttempts()} + '.png'}"/>
     <h1 style="letter-spacing: 10px;" th:text="${hangman.getWordStatus()}"/>
 
+    <div class="statusBox" th:switch="${hangman.currentStatus().toString().equals('Won')}">
+        <h2 class="win" th:case="${true}">
+            Congratulations
+            <br/> You Won!!!
+            <br/> <a href="/">New Game</a>
+        </h2>
+    </div>
+
+    <div class="statusBox" th:switch="${hangman.currentStatus().toString().equals('Lost')}">
+        <h2 class="lost" th:case="${true}">
+            Unfortunately you lost.
+            <br/> Correct word was:
+            <br/> <span th:text="${hangman.getWordToGuess()}"/>
+            <br/> <a href="/">New Game</a>
+        </h2>
+    </div>
+
     <h3>Hints:</h3>
-    <ul class="hints" th:each="hint : ${hints}">
-        <li th:text="${hint}"/>
-    </ul>
+    <ol class="hints">
+        <li th:each="hint : ${hints}" th:text="${hint}"/>
+    </ol>
 
     <h3>Alphabet:</h3>
-    <div class="lettersBox" th:each="letter : ${alphabet.allLetters()}" th:switch="${hangman.getChosenLetters().contains(letter)}">
-        <a th:case="${false}" th:href="@{'/game?chosenLetter=' + ${letter}+'&gameId=' + ${gameId}}"
-           th:text="${letter}"/>
-        <span th:case="${true}" th:text="${letter}"/>
+    <div class="lettersBox">
+        <div th:each="letter : ${alphabet.allLetters()}"
+             th:switch="${hangman.getChosenLetters().contains(letter)}">
+            <a th:case="${false}" th:href="@{'/game?chosenLetter=' + ${letter}+'&gameId=' + ${gameId}}"
+               th:text="${letter}"/>
+            <span th:case="${true}" th:text="${letter}"/>
+        </div>
     </div>
 
 </body>

@@ -1,14 +1,18 @@
-body{
-    width: 750px;
+body {
+    width: 360px;
     margin: 0 auto;
 }
 
 .lettersBox {
+    width: 100%;
+    text-align: center;
+}
+
+.lettersBox div {
     font-size: 24px;
     font-weight: bold;
-    margin: 0 5px;
-    float: left;
-    display: block;
+    margin: 0 2px;
+    display: inline;
     color: red;
 }
 
@@ -19,5 +23,23 @@ body{
 
 .hints li {
     font-size: 18px;
-    color: blue;
+    color: darkgreen;
+    text-transform: capitalize;
+}
+
+.statusBox {
+    width: 100%;
+    text-align: center;
+}
+
+.win {
+    color: deeppink;
+}
+
+.lost {
+    color: chocolate;
+}
+
+.lost span {
+    color: forestgreen;
 }
