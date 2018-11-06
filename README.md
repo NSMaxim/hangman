@@ -9,3 +9,4 @@ _Pre-requirements:_
 _Steps:_
 1. build the project using maven with command _mvn clean package_
 2. go to newly created \target folder and run command _java -jar .\hangman-1.0-SNAPSHOT.jar_
+3. open browser and go to _http://localhost:8080/_
