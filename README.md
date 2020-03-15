@@ -12,6 +12,7 @@ _Steps:_
 3. open browser and go to _http://localhost:8080/_
 
 <h4>How to build and start only with Docker</h4>
+
 _Steps:_
 1. run command to build the image - _docker build -t hangmanapp:v0.2_
 2. run command to get newly built image id - _docker images_, find the newly created **image_id**
