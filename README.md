@@ -14,6 +14,6 @@ _Steps:_
 <h4>How to build and start only with Docker</h4>
 
 _Steps:_
-1. run command to build the image - _docker build -t hangmanapp:v0.2_
+1. run command to build the image - _docker build -t hangmanapp:v0.2 ._
 2. run command to get newly built image id - _docker images_, find the newly created **image_id**
 2. run command to start the image - _docker run -t -d -p 9080:8080 **iamge_id**_
